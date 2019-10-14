@@ -6,7 +6,7 @@ import time
 import datetime
 
 def ng_rok():
-    os.system("sudo ./ngrok http 80")
+    os.system("sudo /bin/ngrok http 80")
 
 tNgrok = threading.Thread(target=ng_rok)
 tNgrok.start()
