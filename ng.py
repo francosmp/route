@@ -8,6 +8,14 @@ import datetime
 def ng_rok():
     os.system("sudo /bin/ngrok http 80")
 
+def lampp():
+    os.system("sudo /opt/lampp/lampp start")
+
+tLampp = threading.Thread(target=lampp)
+tLampp.start()
+
+time.sleep(5)
+
 tNgrok = threading.Thread(target=ng_rok)
 tNgrok.start()
 
