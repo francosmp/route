@@ -47,8 +47,9 @@ while 1:
     except requests.exceptions.RequestException as e:
         print("React Apagado")
 
-    with open('C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php', 'r') as file:
-        data = file.read()
+    file1 = open('C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php', 'r')
+    data = file1.read()
+    file1.close()
 
     m = re.search('[$]espejo = "(.*?)";', data)
 
@@ -56,9 +57,13 @@ while 1:
         urlPhp = m.group(0)
 
     if urlEspejo != "http://mirror.ngrok.io/inf-sec-php-ser/servicios-php.php":
-        data = data.replace(urlPhp, '$espejo = "' + urlEspejo + '";')
+        cambio = '$espejo = "' + urlEspejo + '";'
+        if urlPhp != cambio:
+            data = data.replace(urlPhp, cambio)
+            file2 = open('C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php', "w+")
+            file2.write(data)
+            file2.close()
     else:
         data = data.replace(urlPhp, '$espejo = "";')
 
-    #f = open("C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php", "w+")
-    #f.write(data)
+
