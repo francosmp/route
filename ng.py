@@ -35,7 +35,7 @@ while 1:
     time.sleep(10)
 
     urlReact = 'http://f145d809.ngrok.io/inf-sec-java-ser/java/check'
-    dataReact = {"url": "'" + ngrok + "'"}
+    dataReact = {"url": "http://" + ngrok + "/inf-sec-php-ser/servicios-php.php"}
 
     headers = {'Content-Type': 'application/json'}
     params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
@@ -56,11 +56,8 @@ while 1:
 
     if urlEspejo != "http://mirror.ngrok.io/inf-sec-php-ser/servicios-php.php":
         data = data.replace(urlPhp, '$espejo = "' + urlEspejo + '";')
-        print(data)
-        print("if")
     else:
         data = data.replace(urlPhp, '$espejo = "";')
-        print("else")
 
     f = open("C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php", "w+")
     f.write(data)
