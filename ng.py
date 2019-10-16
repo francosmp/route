@@ -64,6 +64,11 @@ while 1:
             file2.write(data)
             file2.close()
     else:
-        data = data.replace(urlPhp, '$espejo = "";')
+        cambio = '$espejo = "";'
+        if urlPhp != cambio:
+            data = data.replace(urlPhp, cambio)
+            file2 = open('C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php', "w+")
+            file2.write(data)
+            file2.close()
 
 
