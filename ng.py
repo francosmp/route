@@ -35,7 +35,7 @@ while 1:
     time.sleep(10)
 
     urlReact = 'http://f145d809.ngrok.io/inf-sec-java-ser/java/check'
-    dataReact = {"url": "http://" + ngrok + "/inf-sec-php-ser/servicios-php.php"}
+    dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/servicios-php.php"}
 
     headers = {'Content-Type': 'application/json'}
     params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
