@@ -33,7 +33,7 @@ ngrok = datajson['tunnels'][1]['public_url']
 
 while 1:
     time.sleep(10)
-
+    print("NGROK: " + ngrok + "/inf-sec-php-ser/servicios-php.php")
     urlReact = 'http://f145d809.ngrok.io/inf-sec-java-ser/java/check'
     dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/servicios-php.php"}
 
@@ -43,6 +43,7 @@ while 1:
     try:
         response = requests.post(urlReact, params=params, data=json.dumps(dataReact), headers=headers)
         urlEspejo = response.json()['url']
+        print("ESPEJO: " + urlEspejo)
     except requests.exceptions.RequestException as e:
         print("React Apagado")
 
@@ -59,5 +60,5 @@ while 1:
     else:
         data = data.replace(urlPhp, '$espejo = "";')
 
-    f = open("C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php", "w+")
-    f.write(data)
+    #f = open("C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php", "w+")
+    #f.write(data)
