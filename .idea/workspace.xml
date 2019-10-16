@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b34d18aa-a16b-40a7-8288-8d0059f8055b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ng.py" beforeDir="false" afterPath="$PROJECT_DIR$/ng.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +87,8 @@
       <workItem from="1571080061970" duration="1869000" />
       <workItem from="1571108958502" duration="1709000" />
       <workItem from="1571199858291" duration="2034000" />
-      <workItem from="1571214740067" duration="12204000" />
+      <workItem from="1571214740067" duration="13395000" />
+      <workItem from="1571234193658" duration="108000" />
     </task>
     <servers />
   </component>
