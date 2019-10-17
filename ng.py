@@ -6,6 +6,10 @@ import json
 import time
 
 
+def restore():
+    os.system("mysql -u root --password="" test < C:\\xampp\\htdocs\\test")
+
+
 def ng_rok():
     os.system("ngrok http 80")
 
@@ -31,14 +35,37 @@ with open('tunnels.json') as data_file:
 
 ngrok = datajson['tunnels'][1]['public_url']
 
+headers = {'Content-Type': 'application/json'}
+params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
+
+# Back Up
+
+urlReact = 'http://f145d809.ngrok.io/inf-sec-java-ser/java/check'
+dataReactStartup = {"url": "" + ngrok + "/inf-sec-php-ser/servicios-php.php", "config": "startup"}
+
+try:
+    responseStartUp = requests.post(urlReact, params=params, data=json.dumps(dataReactStartup), headers=headers)
+    urlLastBackUp = responseStartUp.json()['url']
+except requests.exceptions.RequestException as e:
+    print("React Apagado")
+
+urlLastBackUp = urlLastBackUp.replace('servicios-php.php', 'enviar.php')
+dataReactStartup = {"url": "" + ngrok + "/inf-sec-php-ser/recibir.php"}
+
+try:
+    responseStartUp = requests.post(urlLastBackUp, params=params, data=json.dumps(dataReactStartup), headers=headers)
+except requests.exceptions.RequestException as e:
+    print("No Backup")
+
+time.sleep(5)
+
+tRestore = threading.Thread(target=restore)
+tRestore.start()
+
 while 1:
     time.sleep(10)
     print("NGROK: " + ngrok + "/inf-sec-php-ser/servicios-php.php")
-    urlReact = 'http://f145d809.ngrok.io/inf-sec-java-ser/java/check'
-    dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/servicios-php.php", "config": ""}
-
-    headers = {'Content-Type': 'application/json'}
-    params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
+    dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/enviar.php", "config": ""}
 
     try:
         response = requests.post(urlReact, params=params, data=json.dumps(dataReact), headers=headers)
@@ -70,5 +97,3 @@ while 1:
             file2 = open('C:\\xampp\\htdocs\\inf-sec-php-ser\\servicios-php.php', "w+")
             file2.write(data)
             file2.close()
-
-
